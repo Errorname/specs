@@ -9,7 +9,7 @@ Dependencies:
 
 The resulting query API is expressed in a format codenamed dmmf. This format is all that is needed to generate a photon client for a given language, ensuring separation between connectors and generators.
 
-![image-20190708182058056](/Users/sorenbs/code/prisma/specs/query-capabilities/high-level-diagram.png)
+![image-20190708182058056](./high-level-diagram.png)
 
 As you can see, DMMF is consumed by Prisma client generators, but is generic enough to also be used by GUI applications that interact with data sources as well as code frameworks that use prisma as the data access component.
 
