@@ -77,3 +77,13 @@ client.user.findMany({where: { [[[posts_any: {category: "Rust"}]]] }})
 MongoDB is a sharded database, so queries that filter across relations can't be implemented efficiently, so at the moment the MongoDB connector does not implement this query capability.
 
 The important takeaway is that neither the DMMF Generator nor any of the client generators know anything about the particular query capabilities of MongoDB. Instead, the MongoDB connector has a declarative description of query capabilities which the DMMF generator combines with the concrete data model to produce a full DMMF that can be consumed by any client generator.
+
+# Components and the Interfaces between them
+
+This section should describe the architectural components in more detail as well as the formats they exchange. Large parts of this section might be references to other specs.
+
+# Query Capabilities
+
+This section should describe all query capabilities in great detail. It would be ideal if we can find a way to group them.
+
+This list should include everything listed in https://github.com/prisma/specs/issues/8
