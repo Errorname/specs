@@ -1,13 +1,3 @@
-# Cue
-
-- No configuration inheritance
-- Superset of JSON
-- Constraints are a core primitive
-  - This is what enable types as values
-- [Video Talk](https://www.youtube.com/watch?v=b3fhA12KS48&t=1381s)
-- Currently maintained by 1 person (worked on Borg, the inspiration for Kubernetes)
-- Not officially supported by Google
-
 <!-- toc -->
 
 - [Valid Cue Examples](#valid-cue-examples)
