@@ -436,8 +436,8 @@ model User {
 
 ### Application 3: 80% of Runtime Validation is Generated
 
-Cue has a concept of a runtime version (called [cuego](https://github.com/cuelang/cue/blob/master/cuego/examples_scratch.go)). You can user input from queries
-against the cue schema.
+Cue has a concept of a runtime version (called [cuego](https://github.com/cuelang/cue/blob/master/cuego/examples_scratch.go)). You can validate user input from
+queries against the cue schema.
 
 ### Application 4: Automated Database Migration
 
@@ -496,8 +496,9 @@ And merges to:
 }
 ```
 
-Which cannot be evaluated. We have a couple options at this point. The naive approach would be to just fail and say we're incompatible. However, I think we have
-all the information we need to automatically generate a migration or test if it's possible on the data.
+Which cannot be evaluated because the `(true | false) & (1 | 0)` will evaluate to an empty set. We have a couple options at this point. The naive approach would
+be to just fail and say we're incompatible. However, I think we have all the information we need to automatically generate a migration or test if it's possible
+on the data.
 
 We could write "casting" rules on how to cast from a "true" to an "integer". In inefficient psuedo-code:
 
