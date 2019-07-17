@@ -256,7 +256,7 @@ Our constraints resolve to a single set.
 
 ## Given the following schema
 
-Users are backed in Postgres, posts and tables are backed in SQLite:
+Users are backed in Postgres, posts and comments are backed in SQLite:
 
 ### Postgres Datasource
 
