@@ -1,9 +1,8 @@
 <!-- toc -->
 
 - [Valid Cue Examples](#valid-cue-examples)
-- [Grammar](#grammar)
-- [Primitive types](#primitive-types)
-- [Modeling](#modeling)
+- [Principles of Cue](#principles-of-cue)
+- [Cue Primitive types](#cue-primitive-types)
 
 * [Real-world Example](#real-world-example)
   - [Evaluating Cue Files](#evaluating-cue-files)
@@ -58,30 +57,7 @@ municipality: {
   constraints.
 - Kubernetes generates protocol definition files from Go code (it's "code-first")
 
-## Grammar
-
-```
-newline        = /* the Unicode code point U+000A */ .
-unicode_char   = /* an arbitrary Unicode code point except newline */ .
-unicode_letter = /* a Unicode code point classified as "Letter" */ .
-unicode_digit  = /* a Unicode code point classified as "Number, decimal digit" */ .
-```
-
-> In The Unicode Standard 8.0, Section 4.5 “General Category” defines a set of character categories. CUE treats all characters in any of the Letter categories
-> Lu, Ll, Lt, Lm, or Lo as Unicode letters, and those in the Number category Nd as Unicode digits.
-
-## Primitive types
-
-```
-null
-bool
-string
-bytes
-int
-float
-```
-
-## Modeling
+## Principles of Cue
 
 - Cue adds constraints as a primitive. This allows them to say "types are values".
 - Cue configuration is Associative, Commutative & Idempotent.
@@ -133,6 +109,17 @@ over them, you could take the intersection of all those configurations.
                     ┌───────────┐    ┌────────────┐    ┌───────────┐
                     │   MySQL   │    │  Postgres  │    │   Mongo   │
                     └───────────┘    └────────────┘    └───────────┘
+```
+
+## Cue Primitive types
+
+```
+null
+bool
+string
+bytes
+int
+float
 ```
 
 # Real-world Example
