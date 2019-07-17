@@ -1,28 +1,36 @@
+
+
 <!-- toc -->
 
 - [Cue in a Nutshell](#cue-in-a-nutshell)
-  - [Valid Cue Examples](#valid-cue-examples)
-  - [Principles of Cue](#principles-of-cue)
-    - [1. "constraints as primitives" give you this unique ability to treat types as values](#1-constraints-as-primitives-give-you-this-unique-ability-to-treat-types-as-values)
-    - [2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:](#2-if-your-configuration-has-the-following-properties-then-merging-configuration-becomes-both-trivial--lossless)
-  - [Cue Primitive types](#cue-primitive-types)
+  * [Valid Cue Examples](#valid-cue-examples)
+  * [Principles of Cue](#principles-of-cue)
+    + [1. "constraints as primitives" give you this unique ability to treat types as values](#1-constraints-as-primitives-give-you-this-unique-ability-to-treat-types-as-values)
+    + [2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:](#2-if-your-configuration-has-the-following-properties-then-merging-configuration-becomes-both-trivial--lossless)
+  * [Cue Primitive types](#cue-primitive-types)
 - [Real-world Example](#real-world-example)
-  - [Evaluating Cue Files](#evaluating-cue-files)
-  - [Exporting to JSON](#exporting-to-json)
+  * [Evaluating Cue Files](#evaluating-cue-files)
+    + [`scratch.cue`](#scratchcue)
+  * [Exporting to JSON](#exporting-to-json)
+    + [`scratch.cue`](#scratchcue-1)
 - [How this _might_ fit into Prisma](#how-this-_might_-fit-into-prisma)
-  - [Given the following schema](#given-the-following-schema)
-    - [Postgres Datasource](#postgres-datasource)
-    - [SQLite Datasource](#sqlite-datasource)
-    - [`user.prisma`](#userprisma)
-    - [`post.prisma`](#postprisma)
-    - [`comment.prisma`](#commentprisma)
-    - [schema.prisma](#schemaprisma)
-  - [Possible Connector Integration](#possible-connector-integration)
-    - [Application 1: Schema Validation](#application-1-schema-validation)
-    - [Application 2: Safe merging of models with the same name](#application-2-safe-merging-of-models-with-the-same-name)
-    - [Application 3: 80% of Runtime Validation is Generated](#application-3-80%25-of-runtime-validation-is-generated)
-    - [Application 4: Automated Database Migration](#application-4-automated-database-migration)
-  - [Used in this Document but not previously specced](#used-in-this-document-but-not-previously-specced)
+  * [Given the following schema](#given-the-following-schema)
+    + [Postgres Datasource](#postgres-datasource)
+    + [SQLite Datasource](#sqlite-datasource)
+    + [`user.prisma`](#userprisma)
+    + [`post.prisma`](#postprisma)
+    + [`comment.prisma`](#commentprisma)
+    + [`schema.prisma`](#schemaprisma)
+  * [Possible Connector Integration](#possible-connector-integration)
+    + [Application 1: Schema Validation](#application-1-schema-validation)
+    + [Application 2: Safe merging of models with the same name](#application-2-safe-merging-of-models-with-the-same-name)
+      - [`base.prisma`](#baseprisma)
+      - [`user.prisma`](#userprisma-1)
+      - [`schema.prisma`](#schemaprisma-1)
+      - [`schema.prisma (resolved)`](#schemaprisma-resolved)
+    + [Application 3: 80% of Runtime Validation is Generated](#application-3-80%25-of-runtime-validation-is-generated)
+    + [Application 4: Automated Database Migration](#application-4-automated-database-migration)
+  * [Used in this Document but not previously specced](#used-in-this-document-but-not-previously-specced)
 
 <!-- tocstop -->
 
@@ -139,7 +147,7 @@ float
 
 ## Evaluating Cue Files
 
-**scratch.cue**
+### `scratch.cue`
 
 ```
 {
@@ -176,7 +184,7 @@ cue eval scratch.cue
 
 ## Exporting to JSON
 
-**scratch.cue**
+### `scratch.cue`
 
 ```
 positive: uint
@@ -347,7 +355,7 @@ model Comment {
 }
 ```
 
-### schema.prisma
+### `schema.prisma`
 
 ```groovy
 import "./user.prisma"
@@ -408,7 +416,7 @@ of `type Email pg.citext` and handle type resolution at the connector level with
 
 ### Application 2: Safe merging of models with the same name
 
-**base.prisma**
+#### `base.prisma`
 
 ```groovy
 model User {
@@ -418,7 +426,7 @@ model User {
 }
 ```
 
-**user.prisma**
+#### `user.prisma`
 
 ```groovy
 model User {
@@ -428,14 +436,14 @@ model User {
 }
 ```
 
-**schema.prisma**
+#### `schema.prisma`
 
 ```groovy
 import "base.prisma"
 import "user.prisma"
 ```
 
-**schema.prisma (resolved)**
+#### `schema.prisma (resolved)`
 
 ```groovy
 model User {
