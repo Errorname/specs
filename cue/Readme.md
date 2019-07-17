@@ -22,6 +22,7 @@
     - [Application 2: Safe merging of models with the same name](#application-2-safe-merging-of-models-with-the-same-name)
     - [Application 3: 80% of Runtime Validation is Generated](#application-3-80%25-of-runtime-validation-is-generated)
     - [Application 4: Automated Database Migration](#application-4-automated-database-migration)
+  - [Used in this Document but not previously specced](#used-in-this-document-but-not-previously-specced)
 
 <!-- tocstop -->
 
@@ -515,3 +516,8 @@ newUsers.each(user => {
   await sq.query(`insert into users (firstName, active, age) values (?, ?, ?)`, user)
 })
 ```
+
+## Used in this Document but not previously specced
+
+1. Connector Interface for available data types and type specifications
+2. How to denote which model is backed by which data source
