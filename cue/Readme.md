@@ -1,28 +1,27 @@
-
-
 <!-- toc -->
 
-  * [Valid Cue Examples](#valid-cue-examples)
-  * [Principles of Cue](#principles-of-cue)
-    + [1. "constraints as primitives" give you this unique ability to treat types as values](#1-constraints-as-primitives-give-you-this-unique-ability-to-treat-types-as-values)
-    + [2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:](#2-if-your-configuration-has-the-following-properties-then-merging-configuration-becomes-both-trivial--lossless)
-  * [Cue Primitive types](#cue-primitive-types)
-- [Real-world Example](#real-world-example)
-  * [Evaluating Cue Files](#evaluating-cue-files)
-  * [Exporting to JSON](#exporting-to-json)
-- [How this _might_ fit into Prisma](#how-this-_might_-fit-into-prisma)
-  * [Given the following schema](#given-the-following-schema)
-    + [Postgres Datasource](#postgres-datasource)
-    + [SQLite Datasource](#sqlite-datasource)
-    + [`user.prisma`](#userprisma)
-    + [`post.prisma`](#postprisma)
-    + [`comment.prisma`](#commentprisma)
-    + [schema.prisma](#schemaprisma)
-  * [Possible Connector Integration](#possible-connector-integration)
-    + [Application 1: Schema Validation](#application-1-schema-validation)
-    + [Application 2: Safe merging of models with the same name](#application-2-safe-merging-of-models-with-the-same-name)
-    + [Application 3: 80% of Runtime Validation is Generated](#application-3-80%25-of-runtime-validation-is-generated)
-    + [Application 4: Automated Database Migration](#application-4-automated-database-migration)
+- [Valid Cue Examples](#valid-cue-examples)
+- [Principles of Cue](#principles-of-cue)
+  - [1. "constraints as primitives" give you this unique ability to treat types as values](#1-constraints-as-primitives-give-you-this-unique-ability-to-treat-types-as-values)
+  - [2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:](#2-if-your-configuration-has-the-following-properties-then-merging-configuration-becomes-both-trivial--lossless)
+- [Cue Primitive types](#cue-primitive-types)
+
+* [Real-world Example](#real-world-example)
+  - [Evaluating Cue Files](#evaluating-cue-files)
+  - [Exporting to JSON](#exporting-to-json)
+* [How this _might_ fit into Prisma](#how-this-_might_-fit-into-prisma)
+  - [Given the following schema](#given-the-following-schema)
+    - [Postgres Datasource](#postgres-datasource)
+    - [SQLite Datasource](#sqlite-datasource)
+    - [`user.prisma`](#userprisma)
+    - [`post.prisma`](#postprisma)
+    - [`comment.prisma`](#commentprisma)
+    - [schema.prisma](#schemaprisma)
+  - [Possible Connector Integration](#possible-connector-integration)
+    - [Application 1: Schema Validation](#application-1-schema-validation)
+    - [Application 2: Safe merging of models with the same name](#application-2-safe-merging-of-models-with-the-same-name)
+    - [Application 3: 80% of Runtime Validation is Generated](#application-3-80%25-of-runtime-validation-is-generated)
+    - [Application 4: Automated Database Migration](#application-4-automated-database-migration)
 
 <!-- tocstop -->
 
@@ -169,11 +168,15 @@ cue eval scratch.cue
 **scratch.cue**
 
 ```
+positive: uint
+byte: uint8
+word: int32
 
-positive: uint byte: uint8 word: int32
-
-{ a: positive & 1 b: string & "hi" c: word & 2_000_000_000 }
-
+{
+  a: positive & 1
+  b: string & "hi"
+  c: word & 2_000_000_000
+}
 ```
 
 ```sh
