@@ -1,25 +1,28 @@
+
+
 <!-- toc -->
 
-- [Valid Cue Examples](#valid-cue-examples)
-- [Principles of Cue](#principles-of-cue)
-- [Cue Primitive types](#cue-primitive-types)
-
-* [Real-world Example](#real-world-example)
-  - [Evaluating Cue Files](#evaluating-cue-files)
-  - [Exporting to JSON](#exporting-to-json)
-* [How this _might_ fit into Prisma](#how-this-_might_-fit-into-prisma)
-  - [Given the following schema](#given-the-following-schema)
-    - [Postgres Datasource](#postgres-datasource)
-    - [SQLite Datasource](#sqlite-datasource)
-    - [`user.prisma`](#userprisma)
-    - [`post.prisma`](#postprisma)
-    - [`comment.prisma`](#commentprisma)
-    - [schema.prisma](#schemaprisma)
-  - [Possible Connector Integration](#possible-connector-integration)
-    - [Application 1: Schema Validation](#application-1-schema-validation)
-    - [Application 2: Safe merging of models with the same name](#application-2-safe-merging-of-models-with-the-same-name)
-    - [Application 3: 80% of Runtime Validation is Generated](#application-3-80%25-of-runtime-validation-is-generated)
-    - [Application 4: Automated Database Migration](#application-4-automated-database-migration)
+  * [Valid Cue Examples](#valid-cue-examples)
+  * [Principles of Cue](#principles-of-cue)
+    + [1. "constraints as primitives" give you this unique ability to treat types as values](#1-constraints-as-primitives-give-you-this-unique-ability-to-treat-types-as-values)
+    + [2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:](#2-if-your-configuration-has-the-following-properties-then-merging-configuration-becomes-both-trivial--lossless)
+  * [Cue Primitive types](#cue-primitive-types)
+- [Real-world Example](#real-world-example)
+  * [Evaluating Cue Files](#evaluating-cue-files)
+  * [Exporting to JSON](#exporting-to-json)
+- [How this _might_ fit into Prisma](#how-this-_might_-fit-into-prisma)
+  * [Given the following schema](#given-the-following-schema)
+    + [Postgres Datasource](#postgres-datasource)
+    + [SQLite Datasource](#sqlite-datasource)
+    + [`user.prisma`](#userprisma)
+    + [`post.prisma`](#postprisma)
+    + [`comment.prisma`](#commentprisma)
+    + [schema.prisma](#schemaprisma)
+  * [Possible Connector Integration](#possible-connector-integration)
+    + [Application 1: Schema Validation](#application-1-schema-validation)
+    + [Application 2: Safe merging of models with the same name](#application-2-safe-merging-of-models-with-the-same-name)
+    + [Application 3: 80% of Runtime Validation is Generated](#application-3-80%25-of-runtime-validation-is-generated)
+    + [Application 4: Automated Database Migration](#application-4-automated-database-migration)
 
 <!-- tocstop -->
 
@@ -62,7 +65,7 @@ municipality: {
 - Cue adds constraints as a primitive. This allows them to say "types are values".
 - Cue configuration is Associative, Commutative & Idempotent.
 
-1. "constraints as primitives" give you this unique ability to treat types as values
+### 1. "constraints as primitives" give you this unique ability to treat types as values
 
 ```
 uint      >=0
@@ -80,7 +83,7 @@ int128    >=-170_141_183_460_469_231_731_687_303_715_884_105_728 &
            <=170_141_183_460_469_231_731_687_303_715_884_105_727
 ```
 
-2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:
+### 2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:
 
 - Associative `(A & B) & C = A & (B & C)`
 - Commutative `A & B = B & A`
