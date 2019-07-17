@@ -1,15 +1,15 @@
 <!-- toc -->
 
-- [Valid Cue Examples](#valid-cue-examples)
-- [Principles of Cue](#principles-of-cue)
-  - [1. "constraints as primitives" give you this unique ability to treat types as values](#1-constraints-as-primitives-give-you-this-unique-ability-to-treat-types-as-values)
-  - [2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:](#2-if-your-configuration-has-the-following-properties-then-merging-configuration-becomes-both-trivial--lossless)
-- [Cue Primitive types](#cue-primitive-types)
-
-* [Real-world Example](#real-world-example)
+- [Cue in a Nutshell](#cue-in-a-nutshell)
+  - [Valid Cue Examples](#valid-cue-examples)
+  - [Principles of Cue](#principles-of-cue)
+    - [1. "constraints as primitives" give you this unique ability to treat types as values](#1-constraints-as-primitives-give-you-this-unique-ability-to-treat-types-as-values)
+    - [2. If your configuration has the following properties, then merging configuration becomes both trivial & lossless:](#2-if-your-configuration-has-the-following-properties-then-merging-configuration-becomes-both-trivial--lossless)
+  - [Cue Primitive types](#cue-primitive-types)
+- [Real-world Example](#real-world-example)
   - [Evaluating Cue Files](#evaluating-cue-files)
   - [Exporting to JSON](#exporting-to-json)
-* [How this _might_ fit into Prisma](#how-this-_might_-fit-into-prisma)
+- [How this _might_ fit into Prisma](#how-this-_might_-fit-into-prisma)
   - [Given the following schema](#given-the-following-schema)
     - [Postgres Datasource](#postgres-datasource)
     - [SQLite Datasource](#sqlite-datasource)
@@ -25,6 +25,16 @@
   - [Used in this Document but not previously specced](#used-in-this-document-but-not-previously-specced)
 
 <!-- tocstop -->
+
+# Cue in a Nutshell
+
+- No configuration inheritance
+- Superset of JSON
+- Constraints are a core primitive
+  - This is what enable types as values
+- [Video Talk](https://www.youtube.com/watch?v=b3fhA12KS48&t=1381s)
+- Currently maintained by 1 person (worked on Borg, the inspiration for Kubernetes)
+- Not officially supported by Google
 
 ## Valid Cue Examples
 
